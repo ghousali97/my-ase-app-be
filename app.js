@@ -18,13 +18,13 @@ app.use("/api/auth", authRoutes);
 
 app.listen(port, () => {
     console.log("Server running on port:" + port);
-    console.log(process.env.ENVIRONMENT);
+    console.log(process.env.NODE_ENV);
 });
 
 
 app.get("/", (req, res) => {
     res.json({
-        message: "Hello world!"
+        message: "Hello world!\n This is " + process.env.NODE_ENV
     });
 });
 
