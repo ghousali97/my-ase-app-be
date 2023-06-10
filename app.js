@@ -11,6 +11,7 @@ const authRoutes = require("./routes/auth.js");
 db.connect((err) => {
     if (err) {
         console.log("connection to database failed!");
+        console.log(err);
     } else {
         console.log("connected to database!");
     }
