@@ -6,6 +6,8 @@ require('dotenv').config();
 
 //pulls connection parameter from .env file for local environment and application
 //setting for ASE production.
+
+
 var connectionParams = {
     host: process.env.DB_URL,
     user: process.env.DB_USER,

@@ -1,4 +1,5 @@
-const db = require('../config/mysqldb');
+const db = require('../config/mysql');
+const { getSecret } = require('../config/keyvault');
 
 function login(req, res) {
     let username = req.body.username;
@@ -11,7 +12,8 @@ function login(req, res) {
 }
 
 function allUsers(req, res) {
-
+    console.log("user triggered!");
+    console.log(db);
     var select_q = "SELECT username, email FROM users";
     db.query(select_q, (err, data) => {
         if (err) {
@@ -22,7 +24,16 @@ function allUsers(req, res) {
     });
 }
 
+function getSecretFromKv(req, res) {
+
+    getSecret('dbuser', 'my-gak-kv-1').then((secret) => {
+        res.json({ secret: secret });
+    });
+
+}
+
 module.exports = {
     login,
-    allUsers
+    allUsers,
+    getSecretFromKv
 }; 
