@@ -45,18 +45,19 @@ async function startApp() {
             cb(null, Date.now() + file.originalname)
         }
     });
-
     const upload = multer({ storage: storage });
-
     app.use("/api/posts", postRoutes);
     app.use("/api/auth", authRoutes);
-
-
 
 
     app.listen(port, () => {
         console.log("Server running on port:" + port);
         console.log(process.env.NODE_ENV);
+    });
+
+
+    app.post('/api/upload', upload.single('file'), (req, res) => {
+        res.status(200).json({ imgUrl: req.file?.filename || "" });
     });
 
     app.get('/', (req, res) => {

@@ -18,9 +18,13 @@ function addPost(req, res) {
     const title = req.body.title;
     const desc = req.body.desc;
     const cat = req.body.cat;
-    const img = req.body.img;
+    let img = req.body.img;
     const date = moment().format('YYYY-MM-DD HH:mm:ss');
 
+    if (img === '') {
+        img = 'default.jpg';
+    }
+    console.log('img:' + img);
     const token = req.header("x-auth-token");
 
     console.log("Token:" + token);
@@ -94,9 +98,9 @@ function updatePost(req, res) {
     const title = req.body.title;
     const desc = req.body.desc;
     const cat = req.body.cat;
-    const img = req.body.img;
+    var img = req.body.img;
 
-    console.log('Updateing post:' + postId);
+    console.log('Updating post:' + postId);
     const token = req.header("x-auth-token");
 
     if (!token) return res.status(401).json({ error: true, message: "Unauthorised!" });

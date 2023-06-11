@@ -37,7 +37,7 @@ module.exports.validatePassword = (password, hash, salt) => {
 module.exports.issueJwt = (user) => {
     const _id = user.id;
     const username = user.username;
-    const expiresIn = '1d';
+    const expiresIn = 86400000;
     const payload = {
         sub: _id,
         username: username,
