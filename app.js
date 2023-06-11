@@ -1,15 +1,17 @@
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const multer = require('multer');
-const port = process.env.PORT || 4000;
-require('dotenv').config();
 const initialiseEnv = require('./config/initEnv');
-const authRoutes = require("./routes/auth.js");
-const postRoutes = require('./routes/posts')
+
 
 async function startApp() {
     await initialiseEnv();
+
+    const express = require('express');
+    const path = require('path');
+    const cors = require('cors');
+    const multer = require('multer');
+    const port = process.env.PORT || 4000;
+    require('dotenv').config();
+    const authRoutes = require("./routes/auth.js");
+    const postRoutes = require('./routes/posts')
 
     const db = require('./config/mysql');
     db.connect((err) => {
