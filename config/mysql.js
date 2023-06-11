@@ -20,7 +20,7 @@ var connectionParams = {
     }
 };
 
-console.log(connectionParams);
+
 
 //create a connection object. We need to use .connect method on connect
 //to establish connection with the database.

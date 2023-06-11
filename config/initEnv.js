@@ -17,8 +17,6 @@ async function putKeyVaultSecretInEnvVar() {
 
     const keyVaultName = process.env.KEY_VAULT_NAME;
 
-    console.log({ dbUserKey, dbPassKey });
-    console.log(keyVaultName);
 
     if (!dbUserKey || !dbPassKey || !keyVaultName) throw Error("getSecret: Required params missing");
 
@@ -45,7 +43,6 @@ async function getConnectionInfo() {
 }
 
 module.exports = async function () {
-
     //update env variables with results from key vault if env is not development
     if (process.env.NODE_ENV !== 'development') {
         try {
@@ -53,7 +50,6 @@ module.exports = async function () {
         } catch (err) {
             console.log(err);
         }
-
     }
 }
 

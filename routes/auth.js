@@ -5,7 +5,10 @@ const authController = require('../controllers/auth');
 const router = express.Router();
 
 
+
+router.post("/register", authController.register);
 router.post("/login", authController.login);
-router.get("/all", authController.allUsers);
-router.get("/secret", authController.getSecretFromKv);
+router.post("/logout", authController.logout);
+router.get("/verifytoken", authController.verifyToken);
+
 module.exports = router;
